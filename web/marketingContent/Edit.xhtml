@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMarketingContentTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditMarketingContentLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{marketingContentController.selected.id}" title="#{bundle.EditMarketingContentTitle_id}" />
+                    <h:outputLabel value="#{bundle.EditMarketingContentLabel_marketingContentId}" for="marketingContentId" />
+                    <h:inputText id="marketingContentId" value="#{marketingContentController.selected.marketingContentId}" title="#{bundle.EditMarketingContentTitle_marketingContentId}" />
+                    <h:outputLabel value="#{bundle.EditMarketingContentLabel_content}" for="content" />
+                    <h:inputText id="content" value="#{marketingContentController.selected.content}" title="#{bundle.EditMarketingContentTitle_content}" />
+                    <h:outputLabel value="#{bundle.EditMarketingContentLabel_contentOwner}" for="contentOwner" />
+                    <h:inputText id="contentOwner" value="#{marketingContentController.selected.contentOwner}" title="#{bundle.EditMarketingContentTitle_contentOwner}" />
+                </h:panelGrid>
+                <h:commandLink action="#{marketingContentController.update}" value="#{bundle.EditMarketingContentSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditMarketingContentViewLink}"/>
+                <br />
+                <h:commandLink action="#{marketingContentController.prepareList}" value="#{bundle.EditMarketingContentShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditMarketingContentIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
