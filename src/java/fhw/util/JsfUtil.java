@@ -1,6 +1,9 @@
 package fhw.util;
 
 import java.util.List;
+import java.util.logging.Logger;
+import javax.enterprise.inject.Produces;
+import javax.enterprise.inject.spi.InjectionPoint;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -56,4 +59,12 @@ public class JsfUtil {
         String theId = JsfUtil.getRequestParameter(requestParameterName);
         return converter.getAsObject(FacesContext.getCurrentInstance(), component, theId);
     }
+    
+    
+    @Produces
+    public Logger pinch(InjectionPoint caller)
+    {
+        return Logger.getLogger(caller.getMember().getDeclaringClass().getName());
+    }
+        
 }
